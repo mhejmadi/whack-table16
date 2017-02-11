@@ -1,6 +1,6 @@
 module Counter exposing (main)
 
-import Html exposing (Html, div, text, button, input, p, h1, h3)
+import Html exposing (Html, div, text, button, input, p, h1, h3, nav)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick, onInput)
 
@@ -65,11 +65,16 @@ update msg model =
 view : Model -> Html Msg
 view model =
   div []
-    [ div [] (List.map renderReview model.reviews )
-    , input [ class "example", value model.title, onInput UpdateTitle, placeholder "Title" ] [ ]
-    , input [ value model.username, onInput UpdateUsername, placeholder "User Name" ] [ ]
-    , input [ value model.review, onInput UpdateReview, placeholder "Review" ] [ ]
-    , button [ onClick SaveReview ] [ text "Save" ]
+      [ div [] [ nav [] [] ]
+
+      , div [] (List.map renderReview model.reviews )
+      , input [ class "example", value model.title, onInput UpdateTitle, placeholder "Title" ] [ ]
+      , div [][]
+      , input [ value model.username, onInput UpdateUsername, placeholder "User Name" ] [ ]
+      , div [] []
+      , input [ value model.review, onInput UpdateReview, placeholder "Review" ] [ ]
+      , div [] []
+      , button [ onClick SaveReview ] [ text "Save" ]
     ]
 
 

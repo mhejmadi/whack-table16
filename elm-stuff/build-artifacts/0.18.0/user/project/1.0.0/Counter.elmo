@@ -121,43 +121,38 @@ var _user$project$Counter$view = function (model) {
 			_0: A2(
 				_elm_lang$html$Html$div,
 				{ctor: '[]'},
-				A2(_elm_lang$core$List$map, _user$project$Counter$renderReview, model.reviews)),
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$nav,
+						{ctor: '[]'},
+						{ctor: '[]'}),
+					_1: {ctor: '[]'}
+				}),
 			_1: {
 				ctor: '::',
 				_0: A2(
-					_elm_lang$html$Html$input,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class('example'),
-						_1: {
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$value(model.title),
-							_1: {
-								ctor: '::',
-								_0: _elm_lang$html$Html_Events$onInput(_user$project$Counter$UpdateTitle),
-								_1: {
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$placeholder('Title'),
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					},
-					{ctor: '[]'}),
+					_elm_lang$html$Html$div,
+					{ctor: '[]'},
+					A2(_elm_lang$core$List$map, _user$project$Counter$renderReview, model.reviews)),
 				_1: {
 					ctor: '::',
 					_0: A2(
 						_elm_lang$html$Html$input,
 						{
 							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$value(model.username),
+							_0: _elm_lang$html$Html_Attributes$class('example'),
 							_1: {
 								ctor: '::',
-								_0: _elm_lang$html$Html_Events$onInput(_user$project$Counter$UpdateUsername),
+								_0: _elm_lang$html$Html_Attributes$value(model.title),
 								_1: {
 									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$placeholder('User Name'),
-									_1: {ctor: '[]'}
+									_0: _elm_lang$html$Html_Events$onInput(_user$project$Counter$UpdateTitle),
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$placeholder('Title'),
+										_1: {ctor: '[]'}
+									}
 								}
 							}
 						},
@@ -165,36 +160,76 @@ var _user$project$Counter$view = function (model) {
 					_1: {
 						ctor: '::',
 						_0: A2(
-							_elm_lang$html$Html$input,
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$value(model.review),
-								_1: {
-									ctor: '::',
-									_0: _elm_lang$html$Html_Events$onInput(_user$project$Counter$UpdateReview),
-									_1: {
-										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$placeholder('Review'),
-										_1: {ctor: '[]'}
-									}
-								}
-							},
+							_elm_lang$html$Html$div,
+							{ctor: '[]'},
 							{ctor: '[]'}),
 						_1: {
 							ctor: '::',
 							_0: A2(
-								_elm_lang$html$Html$button,
+								_elm_lang$html$Html$input,
 								{
 									ctor: '::',
-									_0: _elm_lang$html$Html_Events$onClick(_user$project$Counter$SaveReview),
-									_1: {ctor: '[]'}
+									_0: _elm_lang$html$Html_Attributes$value(model.username),
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$html$Html_Events$onInput(_user$project$Counter$UpdateUsername),
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$placeholder('User Name'),
+											_1: {ctor: '[]'}
+										}
+									}
 								},
-								{
+								{ctor: '[]'}),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$div,
+									{ctor: '[]'},
+									{ctor: '[]'}),
+								_1: {
 									ctor: '::',
-									_0: _elm_lang$html$Html$text('Save'),
-									_1: {ctor: '[]'}
-								}),
-							_1: {ctor: '[]'}
+									_0: A2(
+										_elm_lang$html$Html$input,
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$value(model.review),
+											_1: {
+												ctor: '::',
+												_0: _elm_lang$html$Html_Events$onInput(_user$project$Counter$UpdateReview),
+												_1: {
+													ctor: '::',
+													_0: _elm_lang$html$Html_Attributes$placeholder('Review'),
+													_1: {ctor: '[]'}
+												}
+											}
+										},
+										{ctor: '[]'}),
+									_1: {
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$div,
+											{ctor: '[]'},
+											{ctor: '[]'}),
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$button,
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html_Events$onClick(_user$project$Counter$SaveReview),
+													_1: {ctor: '[]'}
+												},
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html$text('Save'),
+													_1: {ctor: '[]'}
+												}),
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
 						}
 					}
 				}
