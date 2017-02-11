@@ -10,24 +10,12 @@
 </head>
 <body style="background-color: green">
     
-    <nav> 
-        <a href = "home.html">Home</a>
-    </nav>
+<form method="get" action="">
+<p> Name:
+<input type="text" name="user" length="30">
 
-<form method="post" action="/~cs304/cgi-bin/dump.cgi">
-
-<p>What is your name?
-<input type="text" name="user" length="30" value="Arthur, King of the Britons">
-
-<p>What is your quest?<br>
-<textarea name="quest" rows="3" cols="50">To seek the grail.</textarea>
-
-<p>What is your favorite color?<br>
-<select name="color">
-<option>choose
-<option selected>Blue
-<option>No, yel...
-</select>
+<p>Review:<br>
+<textarea name="review" rows="3" cols="50"></textarea>
 
 <p><input type="submit" value="process form" onClick="return confirm('are you sure?');">
 
