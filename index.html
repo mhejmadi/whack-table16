@@ -1,48 +1,66 @@
-<!doctype html>
-<html lang='en'>
-<head>
-    <meta charset='utf-8'>
-    <meta name=author content="Scott D. Anderson">
-    <title>Homepage</title>
-    <link rel="stylesheet" href="../../css/webdb-style.css">
-    <style>
-         #wrapper {
-             padding: 2em;
-             width: 60%;
-         }
-         
-         .not-yet {
-             color: gray;
-         }
+<!-- <!doctype html> -->
+<!-- <html lang='en'> -->
+<!-- <head> -->
+<!-- <meta charset='utf-8'> -->
+<!-- <meta name=author content="Scott D. Anderson"> -->
+<!-- <title>Homepage</title> -->
+<!-- <link rel="stylesheet" href="../../css/webdb-style.css"> -->
+<!-- <style> -->
+<!-- #wrapper { -->
+  <!-- padding: 2em; -->
+  <!-- width: 60%; -->
+  <!-- } -->
 
-         /* for forms that will float on the page */
-         .inset {
-             width: 30%;
-             position: fixed;
-             top: 0px;
-             right: 0px;
-             border: 2px solid teal;
-             margin: 1em 0em 1em 2em;
-             padding: 1em;
-             background-color: #80FFFF;  /* lightened aqua */
-         }
+  <!-- .not-yet { -->
+    <!-- color: gray; -->
+    <!-- } -->
 
-         /* for spans that we're using as buttons */
-        .button {
-             background-color: #80FFFF;
-             border: 1px solid teal;
-             border-radius: 5px;
-         }
-    </style>
-</head>
-<body>
+    <!-- /* for forms that will float on the page */ -->
+    <!-- .inset { -->
+      <!-- width: 30%; -->
+      <!-- position: fixed; -->
+      <!-- top: 0px; -->
+      <!-- right: 0px; -->
+      <!-- border: 2px solid teal; -->
+      <!-- margin: 1em 0em 1em 2em; -->
+      <!-- padding: 1em; -->
+      <!-- background-color: #80FFFF;  /* lightened aqua */ -->
+      <!-- } -->
 
-<nav> 
-  <a href = "index.html">Home</a> |
-  <a href = "#">Search</a> |
-  <a href="form.html">Submit Form</a> |
-  <a href="#">Sign in</a>
-</nav>
+      <!-- /* for spans that we're using as buttons */ -->
+      <!-- .button { -->
+        <!-- background-color: #80FFFF; -->
+        <!-- border: 1px solid teal; -->
+        <!-- border-radius: 5px; -->
+        <!-- } -->
+        <!-- </style> -->
+<!-- </head> -->
+<!-- <body> -->
 
-</body>
+<!-- <nav>  -->
+<!-- <a href = "index.html">Home</a> | -->
+<!-- <a href = "#">Search</a> | -->
+<!-- <a href="form.html">Submit Form</a> | -->
+<!-- <a href="#">Sign in</a> -->
+<!-- </nav> -->
+
+<!-- </body> -->
+<!-- </html> -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Table 16 (best table)</title>
+    <script src="Main.js"></script>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body>
+    <main></main>
+  </body>
+
+  <script>
+    var main = document.querySelector("main")
+    var app = Elm.Counter.embed(main)
+  </script>
 </html>
