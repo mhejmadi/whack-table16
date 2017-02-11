@@ -1,1 +1,35 @@
-Hello World
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name=author content="Scott D. Anderson">
+    <meta name=description content="">
+    <meta name=keywords content="">
+    <link rel="stylesheet" type="text/css" href="http://cs.wellesley.edu/~anderson/sda-style.css">
+    <title></title>
+</head>
+<body style="background-color: green">
+
+<form method="post" action="/~cs304/cgi-bin/dump.cgi">
+
+<p>What is your name?
+<input type="text" name="user" length="30" value="Arthur, King of the Britons">
+
+<p>What is your quest?<br>
+<textarea name="quest" rows="3" cols="50">To seek the grail.</textarea>
+
+<p>What is your favorite color?<br>
+<select name="color">
+<option>choose
+<option selected>Blue
+<option>No, yel...
+</select>
+
+<p><input type="submit" value="process form" onClick="return confirm('are you sure?');">
+
+</form>
+
+<!--#include virtual="../../footer.html" -->
+
+</body>
+</html>
