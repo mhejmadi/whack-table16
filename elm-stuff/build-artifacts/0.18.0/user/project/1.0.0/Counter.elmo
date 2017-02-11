@@ -1,30 +1,66 @@
 var _user$project$Counter$update = F2(
 	function (msg, model) {
 		var _p0 = msg;
-		if (_p0.ctor === 'Increment') {
-			return {
-				ctor: '_Tuple2',
-				_0: _elm_lang$core$Native_Utils.update(
-					model,
-					{counter: model.counter + 1}),
-				_1: _elm_lang$core$Platform_Cmd$none
-			};
-		} else {
-			return {
-				ctor: '_Tuple2',
-				_0: _elm_lang$core$Native_Utils.update(
-					model,
-					{counter: model.counter - 1}),
-				_1: _elm_lang$core$Platform_Cmd$none
-			};
+		switch (_p0.ctor) {
+			case 'UpdateReview':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{review: _p0._0}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'UpdateUsername':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{username: _p0._0}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'UpdateTitle':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{title: _p0._0}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			default:
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{
+							title: '',
+							username: '',
+							review: '',
+							reviews: {ctor: '::', _0: model.title, _1: model.reviews}
+						}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
 		}
 	});
-var _user$project$Counter$model = {counter: 1};
-var _user$project$Counter$Model = function (a) {
-	return {counter: a};
+var _user$project$Counter$model = {
+	review: '',
+	title: 'New Review',
+	username: 'Your User Name',
+	reviews: {ctor: '[]'}
 };
-var _user$project$Counter$Decrement = {ctor: 'Decrement'};
-var _user$project$Counter$Increment = {ctor: 'Increment'};
+var _user$project$Counter$Model = F4(
+	function (a, b, c, d) {
+		return {review: a, title: b, username: c, reviews: d};
+	});
+var _user$project$Counter$SaveReview = {ctor: 'SaveReview'};
+var _user$project$Counter$UpdateUsername = function (a) {
+	return {ctor: 'UpdateUsername', _0: a};
+};
+var _user$project$Counter$UpdateTitle = function (a) {
+	return {ctor: 'UpdateTitle', _0: a};
+};
+var _user$project$Counter$UpdateReview = function (a) {
+	return {ctor: 'UpdateReview', _0: a};
+};
 var _user$project$Counter$view = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
@@ -34,55 +70,106 @@ var _user$project$Counter$view = function (model) {
 			_0: A2(
 				_elm_lang$html$Html$div,
 				{ctor: '[]'},
-				{
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$button,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Events$onClick(_user$project$Counter$Increment),
-							_1: {ctor: '[]'}
-						},
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html$text('+'),
-							_1: {ctor: '[]'}
-						}),
-					_1: {ctor: '[]'}
-				}),
+				A2(_elm_lang$core$List$map, _elm_lang$html$Html$text, model.reviews)),
 			_1: {
 				ctor: '::',
 				_0: A2(
-					_elm_lang$html$Html$div,
-					{ctor: '[]'},
+					_elm_lang$html$Html$input,
 					{
 						ctor: '::',
-						_0: _elm_lang$html$Html$text(
-							_elm_lang$core$Basics$toString(model.counter)),
-						_1: {ctor: '[]'}
-					}),
+						_0: _elm_lang$html$Html_Attributes$class('example'),
+						_1: {
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$value(model.title),
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$html$Html_Events$onInput(_user$project$Counter$UpdateTitle),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$placeholder('Title'),
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					},
+					{ctor: '[]'}),
 				_1: {
 					ctor: '::',
 					_0: A2(
-						_elm_lang$html$Html$div,
-						{ctor: '[]'},
+						_elm_lang$html$Html$input,
 						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$value(model.username),
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$html$Html_Events$onInput(_user$project$Counter$UpdateUsername),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$placeholder('User Name'),
+									_1: {ctor: '[]'}
+								}
+							}
+						},
+						{ctor: '[]'}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$input,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$value(model.review),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$html$Html_Events$onInput(_user$project$Counter$UpdateReview),
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$placeholder('Review'),
+										_1: {ctor: '[]'}
+									}
+								}
+							},
+							{ctor: '[]'}),
+						_1: {
 							ctor: '::',
 							_0: A2(
 								_elm_lang$html$Html$button,
 								{
 									ctor: '::',
-									_0: _elm_lang$html$Html_Events$onClick(_user$project$Counter$Decrement),
+									_0: _elm_lang$html$Html_Events$onClick(_user$project$Counter$SaveReview),
 									_1: {ctor: '[]'}
 								},
 								{
 									ctor: '::',
-									_0: _elm_lang$html$Html$text('-'),
+									_0: _elm_lang$html$Html$text('Save'),
 									_1: {ctor: '[]'}
 								}),
-							_1: {ctor: '[]'}
-						}),
-					_1: {ctor: '[]'}
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$html$Html$text('Title: '),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$html$Html$text(model.title),
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$html$Html$text('Review: '),
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$html$Html$text(model.review),
+											_1: {
+												ctor: '::',
+												_0: _elm_lang$html$Html$text('User: '),
+												_1: {
+													ctor: '::',
+													_0: _elm_lang$html$Html$text(model.username),
+													_1: {ctor: '[]'}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 		});

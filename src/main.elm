@@ -1,45 +1,68 @@
 module Counter exposing (main)
 
-import Html exposing (Html, div, text, button)
-import Html.Events exposing (onClick)
+import Html exposing (Html, div, text, button, input)
+import Html.Attributes exposing (..)
+import Html.Events exposing (onClick, onInput)
 
 
 type alias Model =
-  { counter : Int
+  { review : String
+  , title : String
+  , username : String
+  , reviews : List String
   }
 
 
 model : Model
 model =
-  { counter = 1
+  { review = ""
+  , title = "New Review"
+  , username = "Your User Name"
+  , reviews = []
   }
 
 
 type Msg
-  = Increment
-    | Decrement
+  = UpdateReview String
+    | UpdateTitle String
+    | UpdateUsername String
+    | SaveReview
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
   case msg of
-    Increment ->
-        ( { model | counter = model.counter + 1 }
-        , Cmd.none
-        )
+    UpdateReview newReview ->
+      ( { model | review = newReview }
+      , Cmd.none )
 
-    Decrement ->
-      ( { model | counter = model.counter - 1 }
-      , Cmd.none
-      )
+    UpdateUsername newName ->
+      ( { model | username = newName }
+      , Cmd.none )
+
+    UpdateTitle newTitle ->
+      ( { model | title = newTitle }
+      , Cmd.none )
+
+    SaveReview ->
+      ( { model | title = "", username = "", review = "", reviews = model.title :: model.reviews }
+      , Cmd.none )
 
 
 view : Model -> Html Msg
 view model =
   div []
-    [ div [] [ button [ onClick Increment ] [ text "+" ] ]
-    , div [] [ text <| toString model.counter ]
-    , div [] [ button [ onClick Decrement ] [ text "-" ] ]
+    [ div [] (List.map text model.reviews )
+    , input [ class "example", value model.title, onInput UpdateTitle, placeholder "Title" ] [ ]
+    , input [ value model.username, onInput UpdateUsername, placeholder "User Name" ] [ ]
+    , input [ value model.review, onInput UpdateReview, placeholder "Review" ] [ ]
+    , button [ onClick SaveReview ] [ text "Save" ]
+    , text "Title: "
+    , text model.title
+    , text "Review: "
+    , text model.review
+    , text "User: "
+    , text model.username
     ]
 
 
