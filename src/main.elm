@@ -1,6 +1,6 @@
 module Counter exposing (main)
 
-import Html exposing (Html, div, text, button, input)
+import Html exposing (Html, div, text, button, input, p, h1, h3)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick, onInput)
 
@@ -9,17 +9,30 @@ type alias Model =
   { review : String
   , title : String
   , username : String
-  , reviews : List String
+  , reviews : List Review
   }
 
 
 model : Model
 model =
   { review = ""
-  , title = "New Review"
-  , username = "Your User Name"
+  , title = ""
+  , username = ""
   , reviews = []
   }
+
+type alias Review =
+  { title : String
+  , username : String
+  , content : String
+  }
+
+renderReview : Review -> Html Msg
+renderReview review =
+  div [] [ h1 [] [ text review.title ]
+    , h3 [] [ text "by: ", text review.username ]
+    , p [] [ text review.content ]
+    ]
 
 
 type Msg
@@ -45,24 +58,18 @@ update msg model =
       , Cmd.none )
 
     SaveReview ->
-      ( { model | title = "", username = "", review = "", reviews = model.title :: model.reviews }
+      ( { model | title = "", username = "", review = "", reviews = { title = model.title, username = model.username, content = model.review } :: model.reviews }
       , Cmd.none )
 
 
 view : Model -> Html Msg
 view model =
   div []
-    [ div [] (List.map text model.reviews )
+    [ div [] (List.map renderReview model.reviews )
     , input [ class "example", value model.title, onInput UpdateTitle, placeholder "Title" ] [ ]
     , input [ value model.username, onInput UpdateUsername, placeholder "User Name" ] [ ]
     , input [ value model.review, onInput UpdateReview, placeholder "Review" ] [ ]
     , button [ onClick SaveReview ] [ text "Save" ]
-    , text "Title: "
-    , text model.title
-    , text "Review: "
-    , text model.review
-    , text "User: "
-    , text model.username
     ]
 
 

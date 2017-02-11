@@ -8297,21 +8297,72 @@ var _user$project$Counter$update = F2(
 							title: '',
 							username: '',
 							review: '',
-							reviews: {ctor: '::', _0: model.title, _1: model.reviews}
+							reviews: {
+								ctor: '::',
+								_0: {title: model.title, username: model.username, content: model.review},
+								_1: model.reviews
+							}
 						}),
 					_1: _elm_lang$core$Platform_Cmd$none
 				};
 		}
 	});
+var _user$project$Counter$renderReview = function (review) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$h1,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text(review.title),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$h3,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text('by: '),
+						_1: {
+							ctor: '::',
+							_0: _elm_lang$html$Html$text(review.username),
+							_1: {ctor: '[]'}
+						}
+					}),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$p,
+						{ctor: '[]'},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text(review.content),
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				}
+			}
+		});
+};
 var _user$project$Counter$model = {
 	review: '',
-	title: 'New Review',
-	username: 'Your User Name',
+	title: '',
+	username: '',
 	reviews: {ctor: '[]'}
 };
 var _user$project$Counter$Model = F4(
 	function (a, b, c, d) {
 		return {review: a, title: b, username: c, reviews: d};
+	});
+var _user$project$Counter$Review = F3(
+	function (a, b, c) {
+		return {title: a, username: b, content: c};
 	});
 var _user$project$Counter$SaveReview = {ctor: 'SaveReview'};
 var _user$project$Counter$UpdateUsername = function (a) {
@@ -8332,7 +8383,7 @@ var _user$project$Counter$view = function (model) {
 			_0: A2(
 				_elm_lang$html$Html$div,
 				{ctor: '[]'},
-				A2(_elm_lang$core$List$map, _elm_lang$html$Html$text, model.reviews)),
+				A2(_elm_lang$core$List$map, _user$project$Counter$renderReview, model.reviews)),
 			_1: {
 				ctor: '::',
 				_0: A2(
@@ -8405,31 +8456,7 @@ var _user$project$Counter$view = function (model) {
 									_0: _elm_lang$html$Html$text('Save'),
 									_1: {ctor: '[]'}
 								}),
-							_1: {
-								ctor: '::',
-								_0: _elm_lang$html$Html$text('Title: '),
-								_1: {
-									ctor: '::',
-									_0: _elm_lang$html$Html$text(model.title),
-									_1: {
-										ctor: '::',
-										_0: _elm_lang$html$Html$text('Review: '),
-										_1: {
-											ctor: '::',
-											_0: _elm_lang$html$Html$text(model.review),
-											_1: {
-												ctor: '::',
-												_0: _elm_lang$html$Html$text('User: '),
-												_1: {
-													ctor: '::',
-													_0: _elm_lang$html$Html$text(model.username),
-													_1: {ctor: '[]'}
-												}
-											}
-										}
-									}
-								}
-							}
+							_1: {ctor: '[]'}
 						}
 					}
 				}
