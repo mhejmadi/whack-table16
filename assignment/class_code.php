@@ -68,17 +68,20 @@
 	// This executes the query. We supply the DBH and the query string. It
 	// gives us back a resultset object.
 
+	// GLOBALS
 	$type = $_REQUEST['type'];
 	$request = $_REQUEST['sought'];
+	$self = $_SERVER['PHP_SELF'];
+
 
 	echo "<p>Here are entries from ${_REQUEST['sought']}:\n";
 	echo "<ol>\n";
 
-
 	#------------------ FUNCTIONS -----------------
 	function write_name_several($resultset) {
+		global $self;
 		while($row = $resultset->fetchRow(MDB2_FETCHMODE_ASSOC)) {
-		    echo "<li><a href='#'>${row['name']}  ${row['birthdate']}</a>";
+		    echo "<li><a href='$self?type=name&sought=${row['name']}'>${row['name']}  ${row['birthdate']}</a>";
 		}
 	}
 
@@ -97,8 +100,9 @@
 	}
 
 	function write_title_several($resultset) {
+		global $self;
 		while($row = $resultset->fetchRow(MDB2_FETCHMODE_ASSOC)) {
-		    echo "\t<li><a href='#'>${row['title']}  (${row['release']})</a>\n";
+		    echo "\t<li><a href='$self?type=title&sought=${row['title']}'>${row['title']}  (${row['release']})</a>\n";
 		 }
 	}
 
@@ -116,7 +120,10 @@
 	    	echo "<li>${row['name']}";
 	    }
 	}
+	# ------------------------ END FUNCTIONS -------------------------
 
+
+	# ------------------------- LOGIC TREE ----------------------
 	if ($type == 'name') {
 		$resultset = prepared_query($dbh,$sql_name,array($_REQUEST['sought']));
 
@@ -158,8 +165,18 @@
 		$name_resultset = prepared_query($dbh,$sql_name,array($_REQUEST['sought']));
 		$title_resultset = prepared_query($dbh,$sql_title,array($_REQUEST['sought']));
 
-		$name_count = prepared_query($dbh,$sql_name_count,array($_REQUEST['sought']));
-		$title_count = prepared_query($dbh,$sql_title_count,array($_REQUEST['sought']));
+		$name_count_set = prepared_query($dbh,$sql_name_count,array($_REQUEST['sought']));
+		$name_count = 0;
+		while ($row = $name_count_set->fetchRow(MDB2_FETCHMODE_ASSOC)) {
+			$name_count = $row['count(*)'];
+		}
+
+		$title_count_set = prepared_query($dbh,$sql_title_count,array($_REQUEST['sought']));
+		$title_count = 0;
+		while ($row = $title_count_set->fetchRow(MDB2_FETCHMODE_ASSOC)) {
+			$title_count = $row['count(*)'];
+		}
+
 
 		if ($name_count > 0) {
 			echo "<h3>$name_count Names matched</h3>";
