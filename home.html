@@ -1,0 +1,56 @@
+
+<!doctype html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <meta name=author content="Scott D. Anderson">
+    <title>Homepage</title>
+    <style>
+         #wrapper {
+             padding: 2em;
+             width: 60%;
+         }
+         
+         .not-yet {
+             color: gray;
+         }
+
+         /* for forms that will float on the page */
+         .inset {
+             width: 30%;
+             position: fixed;
+             top: 0px;
+             right: 0px;
+             border: 2px solid teal;
+             margin: 1em 0em 1em 2em;
+             padding: 1em;
+             background-color: #80FFFF;  /* lightened aqua */
+         }
+
+         /* for spans that we're using as buttons */
+        .button {
+             background-color: #80FFFF;
+             border: 1px solid teal;
+             border-radius: 5px;
+         }
+    </style>
+</head>
+<body>
+
+<nav> 
+  <a href="index.html">Submit Form</a> 
+</nav>
+
+
+<div>
+  <form class="inset" action="/~cs304/php/form-echo-html.php" method="get">
+    <!-- modern browsers will insist that "required" elemements are non-empty -->
+    <p> Name: <input type="text" name="user" length="30"> 
+    <p>Review:<br> <textarea name="review" rows="3" cols="50"></textarea>
+    <p><input type="submit">
+  </form>
+
+</div>
+
+</body>
+</html>
